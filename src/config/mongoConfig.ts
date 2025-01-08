@@ -6,4 +6,4 @@ if (!uri) throw new Error("Connection database error");
 
 export const client = new MongoClient(uri);
 
-export const database = client.db("");
+export const database = client.db("TodoApp");

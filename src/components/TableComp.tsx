@@ -1,3 +1,4 @@
+import { fetchTodos } from "@/actions";
 import {
   Table,
   TableBody,
@@ -7,12 +8,22 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Todo } from "@/types";
+
+export const getServerSideProps = async () => {
+  const todos: Todo[] = await fetchTodos();
+  return {
+    props: {
+      todos,
+    },
+  };
+};
 
 export default function TableComp() {
   return (
     <>
       <Table>
-        <TableCaption>A list of your recent invoices.</TableCaption>
+        <TableCaption>Showing all to do list</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead className="w-[100px]">Invoice</TableHead>
