@@ -1,14 +1,18 @@
 import MenuBarComp from "@/components/MenuBarComp";
+import TableComp from "@/components/TableComp";
 
 export default function Home() {
   return (
     <main className="p-10">
-      <section className="flex justify-center font-bold p-10 text-3xl">
+      <div className="flex justify-center font-bold p-10 text-3xl">
         <span>To Do List</span>
-      </section>
-      <section className="flex justify-center">
+      </div>
+      <div className="flex justify-center">
         <MenuBarComp />
-      </section>
+      </div>
+      <div className="flex justify-center p-10 min-w-screen">
+        <TableComp />
+      </div>
     </main>
   );
 }
