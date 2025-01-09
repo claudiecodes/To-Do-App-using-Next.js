@@ -1,6 +1,15 @@
 export const fetchTodos = async () => {
-  const response = await fetch("http://localhost:3000/api/todos");
-  const responseJson = await response.json();
+  const response = await fetch(`${process.env.NEXT_BASE_URL}/api/todos`);
+  const reponseJson = await response.json();
 
-  return responseJson;
+  return reponseJson;
+};
+
+export const handleDelete = async (id: string) => {
+  const response = await fetch(`${process.env.NEXT_BASE_URL}/api/todos/${id}`, {
+    method: "DELETE",
+  });
+  const reponseJson = await response.json();
+
+  return reponseJson;
 };

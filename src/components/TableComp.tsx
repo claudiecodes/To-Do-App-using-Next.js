@@ -10,13 +10,8 @@ import { TodoProps } from "@/types";
 import EditIcon from "@mui/icons-material/Edit";
 import InfoIcon from "@mui/icons-material/Info";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { fetchTodos } from "@/actions";
 
-const fetchTodos = async () => {
-  const response = await fetch(`${process.env.NEXT_BASE_URL}/api/todos`);
-  const responseJaon = await response.json();
-
-  return responseJaon;
-};
 export default async function TableComp() {
   const todos: TodoProps = await fetchTodos();
 
@@ -44,9 +39,17 @@ export default async function TableComp() {
                 <TableCell>{todo.title}</TableCell>
                 <TableCell>{todo.category}</TableCell>
                 <TableCell className="text-end">
-                  <InfoIcon />
-                  <EditIcon />
-                  <DeleteIcon />
+                  <div className="flex justify-end gap-2">
+                    <button className="hover:scale-125">
+                      <InfoIcon />
+                    </button>
+                    <button className="hover:scale-125">
+                      <EditIcon />
+                    </button>
+                    <button className="hover:scale-125">
+                      <DeleteIcon />
+                    </button>
+                  </div>
                 </TableCell>
               </TableRow>
             ))

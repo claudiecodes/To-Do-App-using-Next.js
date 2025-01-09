@@ -5,3 +5,12 @@ export const read = async () => {
 
   return todos;
 };
+
+export const readByCategory = async () => {
+  const todos = await database
+    .collection("todos")
+    .find({ category: "category" })
+    .toArray();
+
+  return todos;
+};
