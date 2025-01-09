@@ -1,5 +1,5 @@
 "use client";
-import type { Metadata } from "next";
+
 import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
@@ -15,11 +15,6 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-const metadata: Metadata = {
-  title: "To Do App",
-  description: "To Do App using Next.js",
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -27,6 +22,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <title>To Do App</title>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

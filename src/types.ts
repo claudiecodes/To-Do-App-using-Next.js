@@ -3,3 +3,7 @@ export type Todo = {
   title: string;
   category: string;
 };
+
+export type TodoProps = {
+  todos: Todo[];
+};

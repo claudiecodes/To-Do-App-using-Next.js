@@ -1,12 +1,4 @@
-import {
-  Menubar,
-  MenubarContent,
-  MenubarItem,
-  MenubarMenu,
-  MenubarSeparator,
-  MenubarShortcut,
-  MenubarTrigger,
-} from "@/components/ui/menubar";
+import { Menubar, MenubarMenu, MenubarTrigger } from "@/components/ui/menubar";
 
 export default function MenuBarComp() {
   return (
@@ -19,9 +11,6 @@ export default function MenuBarComp() {
       </MenubarMenu>
       <MenubarMenu>
         <MenubarTrigger>General</MenubarTrigger>
-      </MenubarMenu>
-      <MenubarMenu>
-        <MenubarTrigger>+</MenubarTrigger>
       </MenubarMenu>
     </Menubar>
   );
