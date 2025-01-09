@@ -10,15 +10,9 @@ import { TodoProps } from "@/types";
 import EditIcon from "@mui/icons-material/Edit";
 import InfoIcon from "@mui/icons-material/Info";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { fetchTodos } from "@/actions";
+import { handleDelete } from "@/actions";
 
-export default async function TableComp() {
-  const todos: TodoProps = await fetchTodos();
-
-  if (!todos) {
-    throw new Error("failed to fetch data");
-  }
-
+export default function TableComp({ todos }: TodoProps) {
   return (
     <>
       <Table>
@@ -32,8 +26,8 @@ export default async function TableComp() {
         </TableHeader>
 
         <TableBody>
-          {todos.todos.length > 0 ? (
-            todos.todos.map((todo, idx) => (
+          {todos.length > 0 ? (
+            todos.map((todo, idx) => (
               <TableRow key={todo._id}>
                 <TableCell className="font-medium">{idx + 1}</TableCell>
                 <TableCell>{todo.title}</TableCell>
