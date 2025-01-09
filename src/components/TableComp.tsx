@@ -1,4 +1,3 @@
-import { fetchTodos } from "@/actions";
 import {
   Table,
   TableBody,
@@ -8,18 +7,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Todo } from "@/types";
+import { read } from "@/models/todoModel";
 
-export const getServerSideProps = async () => {
-  const todos: Todo[] = await fetchTodos();
-  return {
-    props: {
-      todos,
-    },
-  };
-};
-
-export default function TableComp() {
+export default async function TableComp() {
   return (
     <>
       <Table>

@@ -5,12 +5,3 @@ export const read = async () => {
 
   return todos;
 };
-
-// export const create = async (request: Request) => {
-//   const todos = await database.collection("todos").insertOne({});
-
-//   return {
-//     status: 201,
-//     todos,
-//   };
-// };
