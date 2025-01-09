@@ -23,7 +23,7 @@ export default function TableComp() {
   return (
     <>
       <Table>
-        <TableCaption>Showing all to do list</TableCaption>
+        <TableCaption>Showing all</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead className="w-[100px]">Invoice</TableHead>
