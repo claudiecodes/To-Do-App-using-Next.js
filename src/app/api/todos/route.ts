@@ -1,4 +1,4 @@
-import { read, readByCategory } from "@/models/todoModel";
+import { deleteTodo, read, readByCategory } from "@/models/todoModel";
 import { NextResponse } from "next/server";
 
 export const GET = async () => {
@@ -16,5 +16,14 @@ export const GET_BY_CATEGORY = async () => {
   return NextResponse.json({
     status: 200,
     todos,
+  });
+};
+
+export const DELETE = async (_id: string) => {
+  const todo = await deleteTodo(_id);
+
+  return NextResponse.json({
+    status: 200,
+    todo,
   });
 };

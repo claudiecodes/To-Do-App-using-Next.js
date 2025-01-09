@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Table,
   TableBody,
@@ -40,7 +42,12 @@ export default function TableComp({ todos }: TodoProps) {
                     <button className="hover:scale-125">
                       <EditIcon />
                     </button>
-                    <button className="hover:scale-125">
+                    <button
+                      className="hover:scale-125"
+                      onClick={() => {
+                        handleDelete(todo._id);
+                      }}
+                    >
                       <DeleteIcon />
                     </button>
                   </div>
