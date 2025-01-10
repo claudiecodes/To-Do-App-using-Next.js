@@ -11,8 +11,7 @@ import {
 import { TodoProps } from "@/types";
 import EditIcon from "@mui/icons-material/Edit";
 import InfoIcon from "@mui/icons-material/Info";
-import DeleteIcon from "@mui/icons-material/Delete";
-import { handleDelete } from "@/actions";
+import DeleteBtn from "./buttons/DeleteButton";
 
 export default function TableComp({ todos }: TodoProps) {
   return (
@@ -42,14 +41,7 @@ export default function TableComp({ todos }: TodoProps) {
                     <button className="hover:scale-125">
                       <EditIcon />
                     </button>
-                    <button
-                      className="hover:scale-125"
-                      onClick={() => {
-                        handleDelete(todo._id);
-                      }}
-                    >
-                      <DeleteIcon />
-                    </button>
+                    <DeleteBtn _id={todo._id} />
                   </div>
                 </TableCell>
               </TableRow>

@@ -23,5 +23,7 @@ export const handleDelete = async (id: string) => {
     throw new Error("Failed to delete data");
   }
 
+  console.log(responseJson, "<<< line 26");
+
   return responseJson;
 };
