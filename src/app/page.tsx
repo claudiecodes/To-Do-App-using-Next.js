@@ -3,8 +3,12 @@
 import MenuBarComp from "@/components/MenuBarComp";
 import TableComp from "@/components/TableComp";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { fetchTodos } from "@/lib/actions";
+import { TodoProps } from "@/lib/type";
 
 export default async function Home() {
+  const todos: TodoProps = await fetchTodos();
+
   return (
     <main className="p-10 justify-center">
       <div className="flex justify-end mr-10">
@@ -17,7 +21,7 @@ export default async function Home() {
         <MenuBarComp />
       </div>
       <div className="flex justify-center p-10">
-        <TableComp />
+        <TableComp todos={todos.todos} />
       </div>
     </main>
   );
