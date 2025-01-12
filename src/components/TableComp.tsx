@@ -8,13 +8,33 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Todo } from "@/lib/type";
+
+import { useEffect, useState } from "react";
 
 import EditIcon from "@mui/icons-material/Edit";
 import InfoIcon from "@mui/icons-material/Info";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { TodoProps } from "@/lib/type";
+import { handleDelete } from "@/lib/actions";
 
-export default function TableComp({ todos }: TodoProps) {
+export default function TableComp() {
+  const [todos, setTodos] = useState<Todo[]>([]);
+
+  const fetchGetTodo = async () => {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/todos`,
+      { cache: "no-store", headers: { "content-type": "application/json" } }
+    );
+    const responseJson = await response.json();
+
+    setTodos(responseJson.data);
+    return responseJson;
+  };
+
+  useEffect(() => {
+    fetchGetTodo();
+  }, []);
+
   return (
     <>
       <Table>
@@ -42,7 +62,10 @@ export default function TableComp({ todos }: TodoProps) {
                     <button className="hover:scale-125">
                       <EditIcon />
                     </button>
-                    <button className="hover:scale-125">
+                    <button
+                      className="hover:scale-125"
+                      onClick={() => handleDelete(todo._id, fetchGetTodo)}
+                    >
                       <DeleteIcon />
                     </button>
                   </div>

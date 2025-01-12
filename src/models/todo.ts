@@ -4,7 +4,7 @@ import { ObjectId } from "mongodb";
 export const readTodo = async () => {
   const data = await database.collection("todos").find().toArray();
 
-  return Response.json(data);
+  return data;
 };
 
 export const createTodo = async ({
@@ -17,16 +17,16 @@ export const createTodo = async ({
   const data = await database
     .collection("todos")
     .insertOne({ title, category });
-  return Response.json(data);
+  return data;
 };
 
-export const deleteTodo = async ({ _id }: { _id: string }) => {
+export const deleteTodo = async (_id: string) => {
   const newId = new ObjectId(_id);
   const data = await database
     .collection("todos")
     .findOneAndDelete({ _id: newId });
 
-  return Response.json(data);
+  return data;
 };
 
 export const updateTodo = async ({
@@ -47,5 +47,12 @@ export const updateTodo = async ({
       { returnDocument: "after" }
     );
 
-  return Response.json(data);
+  return data;
+};
+
+export const readTodoById = async (_id: string) => {
+  const newId = new ObjectId(_id);
+  const data = await database.collection("todos").findOne({ _id: newId });
+
+  return data;
 };
