@@ -1,5 +1,6 @@
 "use server";
 
+import { AddForm } from "@/components/AddForm";
 import MenuBarComp from "@/components/MenuBarComp";
 import TableComp from "@/components/TableComp";
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -13,6 +14,7 @@ export default async function Home() {
       <div className="flex justify-center font-bold p-10 text-3xl">
         <span>To Do List</span>
       </div>
+      <AddForm />
       <div className="flex justify-center">
         <MenuBarComp />
       </div>
